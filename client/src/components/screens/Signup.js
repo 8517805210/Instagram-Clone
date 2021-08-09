@@ -15,9 +15,9 @@ const SignIn  = ()=>{
     },[url])
     const uploadPic = ()=>{
         const data = new FormData()
-        data.append("file",image)
-        data.append("upload_preset","new-insta")
-        data.append("cloud_name","cnq")
+        data.append("file", image);
+        data.append("upload_preset", "insta-clone");
+        data.append("cloud_name", "Insta-Clone");
         fetch("https://api.cloudinary.com/v1_1/insta-clone-logan/image/upload",{
             method:"post",
             body:data
