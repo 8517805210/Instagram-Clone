@@ -9,7 +9,7 @@ const {JWT_SECRET} = require('../config/keys')
 const requireLogin = require('../middleware/requireLogin')
 const nodemailer = require('nodemailer')
 const sendgridTransport = require('nodemailer-sendgrid-transport')
-const {SENDGRID_API,EMAIL} = require('../config/keys')
+const {SENDGRID_API,EMAIL,SENDER} = require('../config/keys')
 //
 
 
@@ -42,7 +42,7 @@ router.post('/signup',(req,res)=>{
             .then(user=>{
                 transporter.sendMail({
                     to:user.email,
-                    from:"no-reply@insta.com",
+                    from:SENDER,
                     subject:"signup success",
                     html:"<h1>welcome to instagram...</h1>"
                 })
@@ -105,7 +105,7 @@ router.post('/reset-password',(req,res)=>{
              user.save().then((result)=>{
                  transporter.sendMail({
                      to:user.email,
-                     from:"no-replay@insta.com",
+                     from:SENDER,
                      subject:"password reset",
                      html:`
                      <p>You requested for password reset</p>
